@@ -75,12 +75,7 @@ module Stache
         begin
           const_name.constantize
         rescue NameError, LoadError => e
-          # Only rescue NameError/LoadError concerning our mustache_class
-          if e.message.match(/#{const_name}$/)
-            Stache::Handlebars::View
-          else
-            raise e
-          end
+          Stache::Handlebars::View
         end
       end
 
